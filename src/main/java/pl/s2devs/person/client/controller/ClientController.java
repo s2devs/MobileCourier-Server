@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.s2devs.person.client.model.Client;
-import pl.s2devs.person.client.repository.ClientRepository;
 import pl.s2devs.person.client.service.ClientService;
 import pl.s2devs.shared.response.RegistrationResponse;
 
@@ -20,16 +19,14 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    private ClientRepository clientRepository = clientService.getClientRepository();
-
     @GetMapping("/get/all")
     public ResponseEntity<List<Client>> getAllClients() {
-        return ResponseEntity.ok(clientRepository.findAll());
+        return ResponseEntity.ok(clientService.getClientRepository().findAll());
     }
 
     @GetMapping("/get/by/email")
     public ResponseEntity<Client> getClientByEmail(@RequestParam String email) {
-        return ResponseEntity.ok(clientRepository.findByEmail(email));
+        return ResponseEntity.ok(clientService.getClientRepository().findByEmail(email));
     }
 
     @PostMapping("/new")
