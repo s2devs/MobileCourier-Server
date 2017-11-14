@@ -35,7 +35,7 @@ public class McServerApplication {
         }
 
         @Bean
-        UserDetailsService userDetailsService(){
+        UserDetailsService userDetailsService() {
             return userEmail -> {
                 Client client = userRepository.findByEmail(userEmail);
                 if (client != null) {
@@ -60,7 +60,7 @@ public class McServerApplication {
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
-                    .antMatchers("/test/**").permitAll()
+                    .antMatchers("/test/**", "/client/new", "/courier/new").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .httpBasic()
