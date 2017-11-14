@@ -1,6 +1,7 @@
 package pl.s2devs.person.courier.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import pl.s2devs.person.courier.model.Courier;
 import pl.s2devs.person.courier.repository.CourierRepository;
 import pl.s2devs.shared.response.RegistrationResponse;
@@ -8,6 +9,7 @@ import pl.s2devs.shared.response.RegistrationResponse;
 /**
  * Created by rafal on 14.11.17.
  */
+@Service
 public class CourierService {
 
     @Autowired
